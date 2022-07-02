@@ -11,11 +11,11 @@
     "solhint-plugin-prettier": "^0.0.5"
   },
   "scripts": {
-    "lint": "yarn prettier && yarn solhint",
-    "lint:check": "yarn prettier:check && yarn solhint:check",
-    "prettier": "yarn prettier:check --write",
+    "lint": "pnpm prettier && pnpm solhint",
+    "lint:check": "pnpm prettier:check && pnpm solhint:check",
+    "prettier": "pnpm prettier:check --write",
     "prettier:check": "prettier --check \"src/**/*.sol\"",
-    "solhint": "yarn solhint:check --fix",
+    "solhint": "pnpm solhint:check --fix",
     "solhint:check": "solhint --config ./.solhint.json \"src/**/*.sol\""
   }
 }

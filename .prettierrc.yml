@@ -5,3 +5,4 @@ printWidth: 80
 singleQuote: false
 tabWidth: 4
 trailingComma: all
+plugins: [prettier-plugin-solidity]
