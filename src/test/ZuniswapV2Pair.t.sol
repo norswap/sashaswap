@@ -7,7 +7,6 @@ import "../ZuniswapV2Pair.sol";
 import "../mocks/ERC20Mintable.sol";
 import "../libraries/UQ112x112.sol";
 
-
 contract ZuniswapV2PairTest is Test {
     ERC20Mintable token0;
     ERC20Mintable token1;
@@ -259,10 +258,11 @@ contract ZuniswapV2PairTest is Test {
         bytes32 val = vm.load(address(pair), bytes32(uint256(8)));
         assertEq(
             val,
+            // prettier-ignore
             bytes32(abi.encodePacked(
-                uint32(block.timestamp),     // blockTimestampLast
-                uint112(0x1BC16D674EC80000), // 2 * 10^18 (token1 balance)
-                uint112(0xDE0B6B3A7640000))) // 1 * 10^18 (token 0 balance)
+                    uint32(block.timestamp),     // blockTimestampLast
+                    uint112(0x1BC16D674EC80000), // 2 * 10^18 (token1 balance)
+                    uint112(0xDE0B6B3A7640000))) // 1 * 10^18 (token 0 balance)
         );
     }
 
@@ -484,7 +484,10 @@ contract ZuniswapV2PairTest is Test {
         pair.mint(address(this));
 
         uint256 flashloanAmount = 0.1 ether;
-        uint256 flashloanFee = (flashloanAmount * 1000) / 997 - flashloanAmount + 1;
+        uint256 flashloanFee = (flashloanAmount * 1000) /
+            997 -
+            flashloanAmount +
+            1;
 
         Flashloaner fl = new Flashloaner();
 
@@ -545,9 +548,9 @@ contract Flashloaner {
     }
 
     function zuniswapV2Call(
-        address /*sender*/,
-        uint256 /*amount0Out*/,
-        uint256 /*amount1Out*/,
+        address, // sender
+        uint256, // amount0Out
+        uint256, // amount1Out
         bytes calldata data
     ) public {
         address tokenAddress = abi.decode(data, (address));
