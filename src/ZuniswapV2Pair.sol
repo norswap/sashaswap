@@ -25,7 +25,7 @@ interface IERC20 {
 contract ZuniswapV2Pair is ERC20, Math {
     using UQ112x112 for uint224;
 
-    uint256 constant MINIMUM_LIQUIDITY = 1000;
+    uint256 private constant MINIMUM_LIQUIDITY = 1000;
 
     address public token0;
     address public token1;
@@ -55,7 +55,7 @@ contract ZuniswapV2Pair is ERC20, Math {
     );
 
     modifier nonReentrant() {
-        require(!isEntered);
+        require(!isEntered, "reentrancy");
         isEntered = true;
 
         _;
@@ -239,6 +239,7 @@ contract ZuniswapV2Pair is ERC20, Math {
         address to,
         uint256 value
     ) private {
+        // solhint-disable-next-line avoid-low-level-calls
         (bool success, bytes memory data) = token.call(
             abi.encodeWithSignature("transfer(address,uint256)", to, value)
         );

@@ -9,16 +9,16 @@ import "../ZuniswapV2Pair.sol";
 import "../mocks/ERC20Mintable.sol";
 
 contract ZuniswapV2LibraryTest is Test {
-    ZuniswapV2Factory factory;
+    ZuniswapV2Factory private factory;
 
-    ERC20Mintable tokenA;
-    ERC20Mintable tokenB;
-    ERC20Mintable tokenC;
-    ERC20Mintable tokenD;
+    ERC20Mintable private tokenA;
+    ERC20Mintable private tokenB;
+    ERC20Mintable private tokenC;
+    ERC20Mintable private tokenD;
 
-    ZuniswapV2Pair pair;
-    ZuniswapV2Pair pair2;
-    ZuniswapV2Pair pair3;
+    ZuniswapV2Pair private pair;
+    ZuniswapV2Pair private pair2;
+    ZuniswapV2Pair private pair3;
 
     function encodeError(string memory error)
         internal

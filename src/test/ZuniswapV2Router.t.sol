@@ -8,12 +8,12 @@ import "../ZuniswapV2Router.sol";
 import "../mocks/ERC20Mintable.sol";
 
 contract ZuniswapV2RouterTest is Test {
-    ZuniswapV2Factory factory;
-    ZuniswapV2Router router;
+    ZuniswapV2Factory private factory;
+    ZuniswapV2Router private router;
 
-    ERC20Mintable tokenA;
-    ERC20Mintable tokenB;
-    ERC20Mintable tokenC;
+    ERC20Mintable private tokenA;
+    ERC20Mintable private tokenB;
+    ERC20Mintable private tokenC;
 
     function setUp() public {
         factory = new ZuniswapV2Factory();

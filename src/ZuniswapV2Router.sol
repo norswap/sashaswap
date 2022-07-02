@@ -12,7 +12,7 @@ contract ZuniswapV2Router {
     error InsufficientOutputAmount();
     error SafeTransferFailed();
 
-    IZuniswapV2Factory factory;
+    IZuniswapV2Factory private factory;
 
     constructor(address factoryAddress) {
         factory = IZuniswapV2Factory(factoryAddress);
@@ -196,6 +196,7 @@ contract ZuniswapV2Router {
         address to,
         uint256 value
     ) private {
+        // solhint-disable-next-line avoid-low-level-calls
         (bool success, bytes memory data) = token.call(
             abi.encodeWithSignature(
                 "transferFrom(address,address,uint256)",

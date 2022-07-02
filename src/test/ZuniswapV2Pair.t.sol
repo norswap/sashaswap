@@ -8,10 +8,10 @@ import "../mocks/ERC20Mintable.sol";
 import "../libraries/UQ112x112.sol";
 
 contract ZuniswapV2PairTest is Test {
-    ERC20Mintable token0;
-    ERC20Mintable token1;
-    ZuniswapV2Pair pair;
-    TestUser testUser;
+    ERC20Mintable private token0;
+    ERC20Mintable private token1;
+    ZuniswapV2Pair private pair;
+    TestUser private testUser;
 
     function setUp() public {
         testUser = new TestUser();
@@ -524,7 +524,7 @@ contract TestUser {
 contract Flashloaner {
     error InsufficientFlashLoanAmount();
 
-    uint256 expectedLoanAmount;
+    uint256 private expectedLoanAmount;
 
     function flashloan(
         address pairAddress,

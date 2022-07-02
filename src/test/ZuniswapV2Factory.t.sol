@@ -7,12 +7,12 @@ import "../ZuniswapV2Pair.sol";
 import "../mocks/ERC20Mintable.sol";
 
 contract ZuniswapV2FactoryTest is Test {
-    ZuniswapV2Factory factory;
+    ZuniswapV2Factory private factory;
 
-    ERC20Mintable token0;
-    ERC20Mintable token1;
-    ERC20Mintable token2;
-    ERC20Mintable token3;
+    ERC20Mintable private token0;
+    ERC20Mintable private token1;
+    ERC20Mintable private token2;
+    ERC20Mintable private token3;
 
     function setUp() public {
         factory = new ZuniswapV2Factory();
