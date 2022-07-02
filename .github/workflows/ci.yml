@@ -22,7 +22,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install npnpm
+      - name: Install pnpm
         run: npm install --location=global pnpm
 
       - name: Install dependencies
@@ -32,7 +32,7 @@ jobs:
         run: forge config
 
       - name: Check contracts are linted
-        run: pnpm run lint:check
+        run: make lintcheck
 
       - name: Run tests
         run: make test

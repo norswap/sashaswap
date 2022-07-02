@@ -25,8 +25,17 @@ nuke: clean
 	git clean -Xdf
 .PHONY: nuke
 
+PRETTIER := pnpm exec prettier --check "src/**/*.sol"
+SOLHINT  := pnpm exec solhint --config ./.solhint.json "src/**/*.sol"
+
+lintcheck:
+	$(PRETTIER)
+	$(SOLHINT)
+.PHONY: lintcheck
+
 lint:
-	pnpm run lint
+	$(PRETTIER) --write
+	$(SOLHINT) --fix
 .PHONY: lint
 
 test:
