@@ -47,12 +47,20 @@ testgas:
 .PHONY: testgas
 
 testfork:
-	forge test --fork-url $ETH_NODE
+	forge test --fork-url $(ETH_NODE)
 .PHONY: testfork
 
 watch:
 	forge test --watch src/
 .PHONY: watch
+
+# TODO does it need the extra :Deploy ?
+deploy-local:
+	forge script src/deploy/Deploy.s.sol:DeployLocal \
+		--fork-url http://localhost:8545 \
+		--private-key $(PRIVATE_KEY0) \
+		--broadcast
+.PHONY: deploy-local
 
 # To initialize a fresh git repo from the contents.
 init:
